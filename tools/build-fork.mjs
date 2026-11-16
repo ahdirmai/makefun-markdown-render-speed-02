@@ -7,7 +7,10 @@ import { Lexer } from '../vendor/marked/marked.esm.js';
 
 const upstream = new URL('../vendor/marked/marked.esm.js', import.meta.url);
 let source = readFileSync(upstream, 'utf8');
-const revision = Number(process.argv[2] ?? 2);
+const revision = Number(process.argv[2] ?? 4);
+if (!Number.isSafeInteger(revision) || revision < 0 || revision > 4) {
+  throw new Error('Revision must be an integer from 0 to 4.');
+}
 const output = process.argv[3] ? resolve(process.argv[3]) : new URL('../parse.js', import.meta.url);
 const digest = createHash('sha256').update(source).digest('hex');
 if (digest !== 'e76f3b37046a5d294159872002e5f6fcda8ed232e1be45ff76b3863f2919dae3') {
@@ -84,7 +87,29 @@ if (revision >= 3) {
   source += '\nfunction fastFirstLine(src) { const end = src.indexOf("\\n"); return end < 0 ? src : src.slice(0, end); }\n';
 }
 
+if (revision >= 4) {
+  // Only the last eligible run of each marker is needed. Native reverse searches
+  // skip ordinary text, then walk back to the run's head before testing whitespace.
+  const begin = source.indexOf('function fe(a){');
+  const end = source.indexOf('function Ae(a,e){', begin);
+  if (begin < 0 || end < begin) throw new Error('Missing delimiter closer scan.');
+  source = source.slice(0, begin) + `function fe(a){return{maskedSrc:a,lastPossibleEmStrongCloserIndex:{"*":fastLastCloser(a,"*",42),_:fastLastCloser(a,"_",95)},lastPossibleDelCloserIndex:fastLastCloser(a,"~",126)}}` + source.slice(end);
+  source += `
+function fastLastCloser(src, marker, code) {
+  let index = src.lastIndexOf(marker);
+  while (index > 0) {
+    while (index > 0 && src.charCodeAt(index - 1) === code) index--;
+    if (index === 0) return -1;
+    const previous = src.charCodeAt(index - 1);
+    if (previous !== 32 && previous !== 9 && previous !== 10 && previous !== 13 && previous !== 12) return index;
+    index = src.lastIndexOf(marker, index - 1);
+  }
+  return -1;
+}
+`;
+}
+
 // Expose only the requested default-options renderer; callers cannot mutate it.
-source = source.replace(/export\{[^;]+\};/, 'export {x as parse};')
-  .replace('//# sourceMappingURL=marked.esm.js.map', '');
+replaceOnce(source.match(/export\{[^;]+\};/)?.[0] ?? 'MISSING_EXPORT', 'export {x as parse};');
+source = source.replace('//# sourceMappingURL=marked.esm.js.map', '');
 writeFileSync(output, source);

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 const KIT = new URL('../../markdown-render-speed-02-kit/', import.meta.url);
 const cases = JSON.parse(readFileSync(new URL('practice/input/cases.json', KIT), 'utf8'));
 const { marked } = await import('../vendor/marked/marked.esm.js');

@@ -1,4 +1,17 @@
 {
+  "name": "makefun-markdown-render-speed-02",
+  "version": "1.0.0",
   "type": "module",
-  "private": true
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "start": "node main.ts",
+    "build": "node tools/build-fork.mjs",
+    "verify": "node tools/verify.mjs",
+    "bench": "node tools/bench.mjs",
+    "profile": "node tools/prof.mjs"
+  }
 }

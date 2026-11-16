@@ -32,7 +32,7 @@ if (process.argv[2] === '--worker') {
   const rounds = Number(process.argv[2] ?? 9);
   if (!Number.isSafeInteger(rounds) || rounds < 3) throw new Error('Use at least 3 rounds.');
   const variants = process.argv.slice(3);
-  if (!variants.length) variants.push('vendor/marked/marked.esm.js', 'parse.js');
+  if (!variants.length) variants.push('../markdown-render-speed-02-kit/baselines/parse.js', 'parse.js');
   const expected = JSON.parse(readFileSync(reference, 'utf8')).cases;
   const cases = JSON.parse(readFileSync(input, 'utf8'));
   const byId = new Map(expected.map(({ id, html }) => [id, html]));

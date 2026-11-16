@@ -3,7 +3,6 @@ const f = process.argv[2];
 const p = JSON.parse(readFileSync(f, 'utf8'));
 const byId = new Map(p.nodes.map((n) => [n.id, n]));
 const self = new Map();
-for (const n of p.nodes) self.set(n.id, 0);
 // time deltas
 const counts = new Map();
 for (const s of p.samples) counts.set(s, (counts.get(s) ?? 0) + 1);

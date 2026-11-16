@@ -1,0 +1,159 @@
+{
+  "node": "v26.8.2",
+  "platform": "darwin/arm64",
+  "method": "Fresh-process CPU through module load, input JSON, rendering, and output write; one warm-up round; alternating order.",
+  "summary": {
+    "../markdown-render-speed-02-kit/baselines/parse.js": {
+      "casesPassed": 720,
+      "runs": 9,
+      "cpuMedianMs": 602.769,
+      "cpuMinMs": 593.567,
+      "cpuMaxMs": 719.476,
+      "cpuTrimmedMeanMs": 609.633,
+      "renderCpuMedianMs": 537.853,
+      "freshWallMedianMs": 437.5082910000001
+    },
+    "parse.js": {
+      "casesPassed": 720,
+      "runs": 9,
+      "cpuMedianMs": 534.539,
+      "cpuMinMs": 521.392,
+      "cpuMaxMs": 547.577,
+      "cpuTrimmedMeanMs": 531.7616,
+      "renderCpuMedianMs": 469.22,
+      "freshWallMedianMs": 381.78558299999986
+    }
+  },
+  "results": {
+    "../markdown-render-speed-02-kit/baselines/parse.js": [
+      {
+        "cpuMs": 667.335,
+        "renderCpuMs": 597.021,
+        "renderMs": 421.73316700000004,
+        "workloadWallMs": 479.866833,
+        "freshWallMs": 520.580958
+      },
+      {
+        "cpuMs": 593.567,
+        "renderCpuMs": 528.822,
+        "renderMs": 352.39112500000005,
+        "workloadWallMs": 393.391417,
+        "freshWallMs": 429.92158400000017
+      },
+      {
+        "cpuMs": 628.116,
+        "renderCpuMs": 559.88,
+        "renderMs": 388.26920800000005,
+        "workloadWallMs": 429.360917,
+        "freshWallMs": 469.3130000000001
+      },
+      {
+        "cpuMs": 615.791,
+        "renderCpuMs": 551.116,
+        "renderMs": 373.54870900000003,
+        "workloadWallMs": 411.217917,
+        "freshWallMs": 448.3467090000004
+      },
+      {
+        "cpuMs": 602.769,
+        "renderCpuMs": 533.523,
+        "renderMs": 357.557292,
+        "workloadWallMs": 394.92312499999997,
+        "freshWallMs": 437.5082910000001
+      },
+      {
+        "cpuMs": 719.476,
+        "renderCpuMs": 654.352,
+        "renderMs": 481.581875,
+        "workloadWallMs": 518.404583,
+        "freshWallMs": 556.0327500000003
+      },
+      {
+        "cpuMs": 600.178,
+        "renderCpuMs": 535.821,
+        "renderMs": 352.216542,
+        "workloadWallMs": 385.669709,
+        "freshWallMs": 429.5095419999998
+      },
+      {
+        "cpuMs": 599.522,
+        "renderCpuMs": 533.376,
+        "renderMs": 354.424291,
+        "workloadWallMs": 390.913792,
+        "freshWallMs": 430.009
+      },
+      {
+        "cpuMs": 601.311,
+        "renderCpuMs": 537.853,
+        "renderMs": 359.22079199999996,
+        "workloadWallMs": 393.439166,
+        "freshWallMs": 429.116
+      }
+    ],
+    "parse.js": [
+      {
+        "cpuMs": 534.726,
+        "renderCpuMs": 470.539,
+        "renderMs": 312.85354199999995,
+        "workloadWallMs": 350.011,
+        "freshWallMs": 389.26179100000013
+      },
+      {
+        "cpuMs": 534.642,
+        "renderCpuMs": 469.22,
+        "renderMs": 309.085834,
+        "workloadWallMs": 348.487417,
+        "freshWallMs": 386.2711660000002
+      },
+      {
+        "cpuMs": 526.562,
+        "renderCpuMs": 463.223,
+        "renderMs": 305.260375,
+        "workloadWallMs": 340.724875,
+        "freshWallMs": 378.79108300000007
+      },
+      {
+        "cpuMs": 527.488,
+        "renderCpuMs": 463.441,
+        "renderMs": 304.952125,
+        "workloadWallMs": 340.507792,
+        "freshWallMs": 377.94174999999996
+      },
+      {
+        "cpuMs": 534.539,
+        "renderCpuMs": 470.902,
+        "renderMs": 315.290792,
+        "workloadWallMs": 348.47191699999996,
+        "freshWallMs": 387.23529099999996
+      },
+      {
+        "cpuMs": 547.577,
+        "renderCpuMs": 483.311,
+        "renderMs": 311.592208,
+        "workloadWallMs": 344.110583,
+        "freshWallMs": 381.78558299999986
+      },
+      {
+        "cpuMs": 527.413,
+        "renderCpuMs": 464.672,
+        "renderMs": 306.881292,
+        "workloadWallMs": 341.071416,
+        "freshWallMs": 377.9645419999997
+      },
+      {
+        "cpuMs": 521.392,
+        "renderCpuMs": 458.411,
+        "renderMs": 301.155208,
+        "workloadWallMs": 334.634542,
+        "freshWallMs": 370.75337500000023
+      },
+      {
+        "cpuMs": 537.362,
+        "renderCpuMs": 473.609,
+        "renderMs": 312.15829199999996,
+        "workloadWallMs": 345.787459,
+        "freshWallMs": 383.6049579999999
+      }
+    ]
+  }
+}
